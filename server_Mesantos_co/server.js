@@ -28,6 +28,10 @@ app.get('/email', async function(request, response) {
     let data = await knex('email_list').select('*')
     response.send((data))
 });
+app.get('/requests', async function(request, response) {
+    let data = await knex('user_requests').select('*')
+    response.send((data))
+});
 //GET by id
 app.get('/books/:id', async function(request, response) {
     let bookId = request.params.id;
@@ -103,6 +107,22 @@ app.post('/books', (request, response) => {
         console.error('Error inserting email:', error);
         response.status(500).json({ error: "An error occurred while adding the email address." });
     });
+})
+
+//POST request
+app.post('/requests', (request, response) => {
+    knex('user_requests').insert({
+        first_name: request.body.first_name,
+        last_name: request.body.last_name,
+        email: request.body.email,
+    })
+    .then (() => {
+        response.json({message:"New Request has been added"})
+    })
+    .catch(error => {
+        console.error('Error inserting email:', error);
+        response.status(500).json({ error: "An error occurred while adding the request." });
+    });
      
 });
 //DELETE book
@@ -154,6 +174,23 @@ app.delete('/books', (request, response) => {
         response.status(500).json({ error: "An error occurred while deleting that email address." });
     });;
   })
+  //DELETE request
+  app.delete('/requests', (request, response) => {
+    knex('user_requests')
+    .where({
+        first_name: request.body.first_name,
+        last_name: request.body.last_name
+    })
+    .del(['id', 'first_name', 'last_name', 'email' ]) 
+    .then (() => {
+        response.json({message:"Request has been deleted"})
+    })
+    .catch(error => {
+        console.error('Error with delete:', error);
+        response.status(500).json({ error: "An error occurred while deleting that Request." });
+    });;
+  })
+
   
   //PATCH admin
   app.patch('/admin', (request, response) => {

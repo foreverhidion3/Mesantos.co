@@ -6,6 +6,7 @@ const Test_get = () => {
     const [admin, setadmin] = useState();
     const [books, setbooks] = useState();
     const [email, setemail] = useState();
+    const [requests, setrequests] = useState();
     // const [allData, setallData] = useState();
 
 //post email
@@ -70,6 +71,29 @@ const Test_get = () => {
 //         .then(response => response.json())
 //         .then(response => console.log(JSON.stringify(response)));
 // }, []);
+
+//post request
+
+// useEffect(() => {
+
+//     let newrequest = {
+
+//         first_name: 'Paul',
+//         last_name: 'Phlaum',
+//         email: 'foreverhidion3@gmail.com',
+    
+//     }
+//     fetch("http://localhost:8082/requests", {
+//         method: "POST", 
+//         headers: {
+//             "Content-Type": "application/json"
+//           },
+//         body: JSON.stringify(newrequest)
+//     })
+//         .then(response => response.json())
+//         .then(response => console.log(JSON.stringify(response)));
+// }, []);
+
 
 //GET book by id
 //  useEffect( () => {   
@@ -173,6 +197,36 @@ const Test_get = () => {
 //       });
 //   }, []);
 
+//delete request
+// const requestToDelete = {
+//   first_name: "Paul",
+//   last_name: "Phlaum"
+// } 
+// useEffect(() => {
+
+//   fetch("http://localhost:8082/requests", {
+//           method: "DELETE", 
+//           headers: {
+//               "Content-Type": "application/json"
+//             },
+//           body: JSON.stringify(requestToDelete)
+//       })
+//       .then(response => {
+//         if (response.status >= 200 && response.status < 300) {
+//           return response.json();
+//         } else {
+//           throw new Error("Failed to delete that Request");
+//         }
+//       })
+//       .then(data => {
+//         console.log(data)
+//       })
+//       .catch(error => {
+//         console.error("Error:", error);
+//       });
+//   }, []);
+
+
 //PATCH 
 
 //patch admin
@@ -241,26 +295,31 @@ const Test_get = () => {
 
 
     // fetch all
+
     useEffect( () => {
 
-        const fetchAdmin = () => fetch ("http://localhost:8082/admin") .then (response => response.json());
-        const fetchBooks = () => fetch("http://localhost:8082/books") .then (response => response.json()); 
-        const fetchEmail = () => fetch("http://localhost:8082/email") .then (response => response.json());
+      const fetchAdmin = () => fetch ("http://localhost:8082/admin") .then (response => response.json());
+      const fetchBooks = () => fetch("http://localhost:8082/books") .then (response => response.json()); 
+      const fetchEmail = () => fetch("http://localhost:8082/email") .then (response => response.json());
+      const fetchRequests = () => fetch("http://localhost:8082/requests") .then(response => response.json());
 
-        Promise.all ([fetchAdmin(), fetchBooks(), fetchEmail()])
-        .then(data => {
-          setadmin(data[0]);
-          setbooks(data[1]);
-          setemail(data[2]);
-        })
-        .catch(err => {
-          console.error(err.message);
-        });
-        
-      }, []);
-        console.log(admin);
-        console.log(books);
-        console.log(email);
+      Promise.all ([fetchAdmin(), fetchBooks(), fetchEmail(), fetchRequests()])
+      .then(data => {
+        setadmin(data[0]);
+        setbooks(data[1]);
+        setemail(data[2]);
+        setrequests(data[3]);
+      })
+      .catch(err => {
+        console.error(err.message);
+      });
+      
+    }, []);
+      console.log(admin);
+      console.log(books);
+      console.log(email);
+      console.log(requests);
+    
 
     //fetch admin
     // useEffect( () => {   
@@ -303,6 +362,23 @@ const Test_get = () => {
         
     //   }, []);
     //     console.log(email)
+
+     //fetch use_request
+    // useEffect( () => {   
+    //     fetch("http://localhost:8082/requests")
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       setrequests(data);
+    //     })
+    //     .catch(err => {
+    //       console.error(err.message);
+    //     });
+        
+    //   }, []);
+    //     console.log(requests)
+
+        
+
 
     
     
