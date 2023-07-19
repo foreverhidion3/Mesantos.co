@@ -48,7 +48,7 @@ app.get('/email', async function(request, response) {
 //     res.send("Hello Paul! \n We've been waiting for you.")
 // })
 
-//post to test
+//POST email
 app.post('/email', (request, response) => {
     knex('email_list').insert({
         email: request.body.email
@@ -62,6 +62,48 @@ app.post('/email', (request, response) => {
     });
      
 });
+//POST admin
+app.post('/admin', (request, response) => {
+    knex('admin_user').insert({
+        first_name: request.body.first_name,
+        last_name: request.body.last_name,
+        email: request.body.email,
+        password: request.body.password,
+        books_id: request.body.book_id,
+        super_admin: request.body.super_admin
+    })
+    .then (() => {
+        response.json({message:"New Admin_User has been added"})
+    })
+    .catch(error => {
+        console.error('Error inserting email:', error);
+        response.status(500).json({ error: "An error occurred while adding the email address." });
+    });
+     
+});
+//POST book
+app.post('/books', (request, response) => {
+    knex('books').insert({
+        id: request.body.id,
+        title: request.body.title,
+        image_path: request.body.image_path,
+        description: request.body.description,
+        cost: request.body.cost,
+        available: request.body.available
+    })
+    .then (() => {
+        response.json({message:"New Book has been added and is ready for sale!"})
+    })
+    .catch(error => {
+        console.error('Error inserting email:', error);
+        response.status(500).json({ error: "An error occurred while adding the email address." });
+    });
+     
+});
+
+
+
+
 // app.post('/email', (req, res) => {
 //     let newEmail = req.body;
 //     email.push(newEmail);

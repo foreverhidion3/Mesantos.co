@@ -9,8 +9,6 @@ const Test_get = () => {
     // const [allData, setallData] = useState();
 
 //post books
-
-
 useEffect(() => {
 
     let newEmail = {
@@ -26,6 +24,55 @@ useEffect(() => {
         .then(response => response.json())
         .then(response => console.log(JSON.stringify(response)));
 }, []);
+
+// post admin
+useEffect(() => {
+
+    let newAdmin = {
+
+        first_name: 'Peter',
+        last_name: 'Stock',
+        email: 'ssCHoc@gmail.com',
+        password: 'peanuts&JJ',
+        books_id: 1,
+        super_admin: false
+
+    }
+    fetch("http://localhost:8082/admin", {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json"
+          },
+        body: JSON.stringify(newAdmin)
+    })
+        .then(response => response.json())
+        .then(response => console.log(JSON.stringify(response)));
+}, []);
+
+// post book
+useEffect(() => {
+
+    let newBook = {
+        id: 5,
+        title: 'The TEST BOOK2',
+        image_path: '/images/SS_COVER_Reduced.svg', 
+        description: "In a remote medieval village, Kady, a half-demon, battles constant bullying and prejudice. Tormented by inner struggles, she yearns for acceptance and a sense of belonging. As tragedies befall her village, Kady's journey becomes a path of self-discovery, resilience, and the realization that her differences hold the key to strength and compassion.", 
+        cost: 1000,
+        available: 200
+      }
+    fetch("http://localhost:8082/books", {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json"
+          },
+        body: JSON.stringify(newBook)
+    })
+        .then(response => response.json())
+        .then(response => console.log(JSON.stringify(response)));
+}, []);
+
+
+
 
     
 
