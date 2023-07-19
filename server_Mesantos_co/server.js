@@ -24,10 +24,15 @@ app.get('/books', async function(request, response) {
     let data = await knex('books').select('*')
     response.send((data))
 });
-
 app.get('/email', async function(request, response) {
     let data = await knex('email_list').select('*')
     response.send((data))
+});
+//GET by id
+app.get('/books/:id', async function(request, response) {
+    let bookId = request.params.id;
+    let data = await knex('books').select('*').where({ id:bookId }).first();
+    response.json(data)
 });
 
 // app.get('/', (req, res) => 
@@ -100,6 +105,71 @@ app.post('/books', (request, response) => {
     });
      
 });
+//DELETE book
+app.delete('/books', (require, response) => {
+    knex('books')
+    .where('title', 'The TEST BOOK')
+    .del(['id', 'title', 'description', 'cost','available' ]) 
+    .then (() => {
+        response.json({message:"Tile has been deleted"})
+    })
+    .catch(error => {
+        console.error('Error with delete:', error);
+        response.status(500).json({ error: "An error occurred while deleting that title." });
+    });;
+  })
+  //DELETE admin
+  app.delete('/admin', (require, response) => {
+    knex('admin_user')
+    .where('first_name', 'Peter')
+    .del(['id', 'first_name', 'last_name', 'email','password', 'books_id', 'super_admin' ]) 
+    .then (() => {
+        response.json({message:"Admin_user has been deleted"})
+    })
+    .catch(error => {
+        console.error('Error with delete:', error);
+        response.status(500).json({ error: "An error occurred while deleting that Admin_user." });
+    });;
+  })
+  //DELETE email
+  app.delete('/email', (require, response) => {
+    knex('email_list')
+    .where('email', 'PaulE@fatboymail.com')
+    .del(['id', 'email' ]) 
+    .then (() => {
+        response.json({message:"Email address has been deleted"})
+    })
+    .catch(error => {
+        console.error('Error with delete:', error);
+        response.status(500).json({ error: "An error occurred while deleting that email address." });
+    });;
+  })
+  
+
+
+//DELETE BY ID?
+// app.delete('/books', (req,res) => {
+//     knex('books')
+//     .where('title', 'The TEST BOOK2').where('title',req.body.title)
+//       .then(data => {
+//         if(!data[0]){
+//           res.json({
+//             message:'That title does not exist for that user.'
+//           })
+//         }else{
+//           knex('books').where('interest_name',req.body.interest_name).andWhere('personnel_id',req.params.personnel_id).del()
+//           .then(res.status(200).json('Interest removed succesfully'));
+//         }
+//       })      
+//       .catch(err =>
+//         res.status(404).json({
+//           message:'The data you are looking for could not be found. Please try again'
+//         })
+//       );
+//   })
+
+
+
 
 
 
