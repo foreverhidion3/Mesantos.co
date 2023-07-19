@@ -1,3 +1,4 @@
+// "start": "npx knex migrate:latest && npx knex seed:run && nodemon server.js"
 const express = require('express');
 const cors = require('cors');
 
@@ -5,18 +6,29 @@ const app = express();
 const port = 8082
 const knex = require('knex')(require('./knexfile.js')['development']);
 
-
-app.use(cors());
+app.use(cors({origin: 'http://localhost:3000'}));
+// app.use(cors());
 app.use(express.json());
 
 //get
 app.get('/', (req, res) => 
 res.send('Hello World! Mesantos.co is listening'))
 
-// app.get('/', async function(request, response) {
-//     let data = await knex('test_emails').select('*')
-//     response.send((data))    
-// });
+// All GETs
+app.get('/admin', async function(request, response) {
+    let data = await knex('admin_user').select('*')
+    response.send((data))    
+});
+
+app.get('/books', async function(request, response) {
+    let data = await knex('books').select('*')
+    response.send((data))
+});
+
+app.get('/email', async function(request, response) {
+    let data = await knex('email_list').select('*')
+    response.send((data))
+});
 
 // app.get('/', (req, res) => 
 // res.send("This then is the end."))
@@ -36,11 +48,24 @@ res.send('Hello World! Mesantos.co is listening'))
 //     res.send("Hello Paul! \n We've been waiting for you.")
 // })
 
-//post
-// app.post('/books', (req, res) => {
-//     let newBook = req.body;
-//     books.push(newBook);
-//     res.send(`Your book: ${newBook.name} has been added to the Library`);
+//post to test
+app.post('/email', (request, response) => {
+    knex('email_list').insert({
+        email: request.body.email
+    })
+    .then (() => {
+        response.json({message:"Email Address has been added"})
+    })
+    .catch(error => {
+        console.error('Error inserting email:', error);
+        response.status(500).json({ error: "An error occurred while adding the email address." });
+    });
+     
+});
+// app.post('/email', (req, res) => {
+//     let newEmail = req.body;
+//     email.push(newEmail);
+//     res.send(`Email address: ${newEmail.email} has been added to the Library`);
     
 // })
 
