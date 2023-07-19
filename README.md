@@ -13,8 +13,8 @@ Kimura needs a website created for the promotion of her upcoming novel The Sword
 
 Despite what her bio says, she is rather disagreeable and controling by nature. She doesnt want anyone one her management team to be able to edit the content of the website. She maintains full control with the super-user:
 
-Super-user Name: Mesantos_K
-Password: 1234qwer
+Super-Admin Name: Mesantos_K
+Password: 1234creeper
 
 She requested that the web-site be created with:
 
@@ -26,7 +26,12 @@ In order to stream line the installation process, we wrote a docker-compose.yaml
 
 Once Docker is installed, navigate to the Mesantos.co folder and run; docker-compose up in your terminal.
 
-With Kimura's permission, we have included the Super-user name and password inside of this document so that you will have full access to the application. However, feel free to create your own user name and password to get a better feel for the site.
+With Kimura's permission, we have included the Super-user name and password inside of this document so that you will have full access to the application. If you would like to create an account of your own, fill out the application form and wait for it to be approved by Kimura. If she approves your request, she will email you your user name and password from K_Mesantos@protonmail.com 
+
+If you would like to test out pre-approved access, feel free to use:
+
+Admin Name: johnJ
+Password: @#!*&%$+19
 
 //Backend
 
