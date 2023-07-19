@@ -106,9 +106,12 @@ app.post('/books', (request, response) => {
      
 });
 //DELETE book
-app.delete('/books', (require, response) => {
+app.delete('/books', (request, response) => {
     knex('books')
-    .where('title', 'The TEST BOOK')
+    .where({
+        title: request.body.title
+    })
+    // .where('title', 'The TEST BOOK')
     .del(['id', 'title', 'description', 'cost','available' ]) 
     .then (() => {
         response.json({message:"Tile has been deleted"})
@@ -119,9 +122,13 @@ app.delete('/books', (require, response) => {
     });;
   })
   //DELETE admin
-  app.delete('/admin', (require, response) => {
+  app.delete('/admin', (request, response) => {
     knex('admin_user')
-    .where('first_name', 'Peter')
+    .where({
+        first_name: request.body.first_name,
+        last_name: request.body.last_name
+    })
+    // .where('first_name', 'Peter')
     .del(['id', 'first_name', 'last_name', 'email','password', 'books_id', 'super_admin' ]) 
     .then (() => {
         response.json({message:"Admin_user has been deleted"})
@@ -132,16 +139,54 @@ app.delete('/books', (require, response) => {
     });;
   })
   //DELETE email
-  app.delete('/email', (require, response) => {
+  app.delete('/email', (request, response) => {
     knex('email_list')
-    .where('email', 'PaulE@fatboymail.com')
-    .del(['id', 'email' ]) 
+    .where({
+         email: request.body.email 
+        })
+    // .where('email', 'PaulE@fatboymail.com')
+    .del(['email' ]) 
     .then (() => {
         response.json({message:"Email address has been deleted"})
     })
     .catch(error => {
         console.error('Error with delete:', error);
         response.status(500).json({ error: "An error occurred while deleting that email address." });
+    });;
+  })
+  
+  //PATCH admin
+  app.patch('/admin', (request, response) => {
+    knex('admin_user')
+      .where({ 
+          first_name: request.body.first_name,
+          last_name: request.body.last_name
+      })
+      .update({ 
+          email: request.body.email,
+          books_id: request.body.book_id,
+          password: request.body.password 
+      })
+      .then(() => {
+          response.json({ message: "Admin_user has been updated" });
+      })
+      .catch(error => {
+          console.error('Error with update:', error);
+          response.status(500).json({ error: "An error occurred while updating the Admin_user." });
+      });
+  });
+
+   //PATCH books
+   app.patch('/books', (request, response) => {
+    knex('books')
+    .where({ title: request.body.title })
+    .update({ description: request.body.description })
+    .then (() => {
+        response.json({message:"Book description has been update"})
+    })
+    .catch(error => {
+        console.error('Error with delete:', error);
+        response.status(500).json({ error: "An error occurred while updating the book." });
     });;
   })
   

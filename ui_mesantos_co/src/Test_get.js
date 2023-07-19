@@ -8,11 +8,11 @@ const Test_get = () => {
     const [email, setemail] = useState();
     // const [allData, setallData] = useState();
 
-//post books
+//post email
 // useEffect(() => {
 
 //     let newEmail = {
-//         email: "PaulE@fatboymail.com"
+//         email: "hyzynmordis@beautifulmail.com"
 //     }
 //     fetch("http://localhost:8082/email", {
 //         method: "POST", 
@@ -30,11 +30,11 @@ const Test_get = () => {
 
 //     let newAdmin = {
 
-//         first_name: 'Peter',
-//         last_name: 'Stock',
-//         email: 'ssCHoc@gmail.com',
-//         password: 'peanuts&JJ',
-//         books_id: 1,
+//         first_name: 'Paul',
+//         last_name: 'Whaley',
+//         email: 'foreverhidion3@gmail.com',
+//         password: 'Thisthenistheend',
+//         books_id: 2,
 //         super_admin: false
 
 //     }
@@ -88,8 +88,10 @@ const Test_get = () => {
 
 //DELETE
 
-//delete title
-// const bookTitleToDelete = "The TEST BOOK";
+//delete book
+// const bookTitleToDelete = {
+//   title: "The TEST BOOK2" 
+// } 
 // useEffect(() => {
 
 //   fetch("http://localhost:8082/books", {
@@ -97,7 +99,7 @@ const Test_get = () => {
 //           headers: {
 //               "Content-Type": "application/json"
 //             },
-//           body: JSON.stringify({ title: bookTitleToDelete })
+//           body: JSON.stringify(bookTitleToDelete)
 //       })
 //       .then(response => {
 //         if (response.status >= 200 && response.status < 300) {
@@ -115,7 +117,10 @@ const Test_get = () => {
 //   }, []);
 
 //delete admin
-// const adminToDelete = "Peter";
+// const adminToDelete = {
+//   first_name: "Paul",
+//   last_name: "Whaley"
+// } 
 // useEffect(() => {
 
 //   fetch("http://localhost:8082/admin", {
@@ -123,7 +128,7 @@ const Test_get = () => {
 //           headers: {
 //               "Content-Type": "application/json"
 //             },
-//           body: JSON.stringify({ first_name: adminToDelete })
+//           body: JSON.stringify(adminToDelete)
 //       })
 //       .then(response => {
 //         if (response.status >= 200 && response.status < 300) {
@@ -141,7 +146,9 @@ const Test_get = () => {
 //   }, []);
 
 //delete email
-// const emailToDelete = "PaulE@fatboymail.com";
+// const emailToDelete = {
+//   email: "hyzynmordis@beautifulmail.com"
+// }
 // useEffect(() => {
 
 //   fetch("http://localhost:8082/email", {
@@ -149,7 +156,7 @@ const Test_get = () => {
 //           headers: {
 //               "Content-Type": "application/json"
 //             },
-//           body: JSON.stringify({ title: emailToDelete  })
+//           body: JSON.stringify(emailToDelete)
 //       })
 //       .then(response => {
 //         if (response.status >= 200 && response.status < 300) {
@@ -165,6 +172,69 @@ const Test_get = () => {
 //         console.error("Error:", error);
 //       });
 //   }, []);
+
+//PATCH 
+
+//patch admin
+
+  // const adminUpdate = {
+  //   first_name: 'Paul',
+  //   last_name: 'Whaley',
+  //   email: 'WhatisGOINGON!@gmail.com,',
+  //   book_id: 1,
+  //   password: 'Thisthenisnothteend'
+  // };
+  // useEffect(() => {
+  // fetch("http://localhost:8082/admin", {
+  //         method: "PATCH", 
+  //         headers: {
+  //             "Content-Type": "application/json"
+  //           },
+  //         body: JSON.stringify(adminUpdate)
+  //     })
+  //     .then(response => {
+  //       if (response.status >= 200 && response.status < 300) {
+  //         return response.json({message:"Admin_user has been update"});
+  //       } else {
+  //         throw new Error(`Failed to update Admin_user`);
+  //       }
+  //     })
+  //     .then(data => {
+  //       console.log(data)
+  //     })
+  //     .catch(error => {
+  //       console.error("Error:", error);
+  //     });
+  // }, []);
+
+//patch book
+
+// const bookUpdate = {
+//   title: 'Awakened',
+//   description: "Maimed wolf Coin and feline friend Heromine unite, embarking on an epic adventure to save their beloved forest. Facing perilous challenges, they demonstrate extraordinary teamwork, unwavering courage, and the power of true friendship. Through their bravery, they triumph against all odds."
+// };
+// useEffect(() => {
+// fetch("http://localhost:8082/books", {
+//         method: "PATCH", 
+//         headers: {
+//             "Content-Type": "application/json"
+//           },
+//         body: JSON.stringify(bookUpdate)
+//     })
+//     .then(response => {
+//       if (response.status >= 200 && response.status < 300) {
+//         return response.json();
+//       } else {
+//         throw new Error('Failed to update book');
+//       }
+//     })
+//     .then(data => {
+//       console.log(data)
+//     })
+//     .catch(error => {
+//       console.error("Error:", error);
+//     });
+// }, []);
 
 
 
