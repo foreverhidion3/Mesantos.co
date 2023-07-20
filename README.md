@@ -11,7 +11,7 @@ Mesantos Kimura's literary journey is a celebration of her heritage, her bond wi
 
 Kimura needs a website created for the promotion of her upcoming novel The Sword Slinger, an epic tale about a half-ling named Creeper set in her universe of Elmareth.
 
-Despite what her bio says, she is rather disagreeable and controling by nature. She doesnt want anyone one her management team to be able to edit the content of the website. She maintains full control with the super-user:
+Despite what her bio says, she is rather disagreeable and controling by nature. She doesnt want anyone one her management team to be able to delete or edit the content of the website. She also is the only one who can create a new admin user. She maintains full control with the super-user:
 
 Super-Admin Name: Mesantos_K
 Password: 1234creeper
@@ -21,6 +21,8 @@ She requested that the web-site be created with:
 1. React App 
 2. Express 
 3. PostgreSQL
+
+We chose knex, docker, bcrypt, and JASON Web Tokens to round out the package.  
 
 In order to stream line the installation process, we wrote a docker-compose.yaml file to combind all the necessary downloads and add-ons into one 'docker-compose up' command. However, before the installation can begin, users must navigate to https://docs.docker.com/compose/install/ and install the latest version of Docker for their machine.
 
@@ -39,12 +41,15 @@ The database for Mesantos.co was seeded with knex and created with simpicity and
 1. Admin User
 2. Books
 3. Email List
+4. Admin User Account Requests
 
     Users includes one Admin Super-user and an unlimited number of Admin users.
     
     Books is Kimura's current Library for sale.
     
     Email list was included to allow interested parties to apply for a Sword Slinger News Letter once the book offically launches
+
+    Admin User Account Request was built to store the requests for new accounts
 
 
 

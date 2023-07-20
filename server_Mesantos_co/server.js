@@ -1,6 +1,8 @@
 // "start": "npx knex migrate:latest && npx knex seed:run && nodemon server.js"
 const express = require('express');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 const port = 8082
@@ -148,7 +150,6 @@ app.delete('/books', (request, response) => {
         first_name: request.body.first_name,
         last_name: request.body.last_name
     })
-    // .where('first_name', 'Peter')
     .del(['id', 'first_name', 'last_name', 'email','password', 'books_id', 'super_admin' ]) 
     .then (() => {
         response.json({message:"Admin_user has been deleted"})
@@ -164,7 +165,6 @@ app.delete('/books', (request, response) => {
     .where({
          email: request.body.email 
         })
-    // .where('email', 'PaulE@fatboymail.com')
     .del(['email' ]) 
     .then (() => {
         response.json({message:"Email address has been deleted"})
