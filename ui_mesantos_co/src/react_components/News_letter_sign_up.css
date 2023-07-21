@@ -1,0 +1,32 @@
+.pop_up_container {
+    margin-top: -75%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-bottom: 58%;
+    padding-top: 10%;
+    /* background-color: blue; */
+    z-index: 2;
+}
+.return_home_from_sign_up {
+    margin-top: 0%;
+    margin-left: 90%;
+    /* margin-right: 20%; */
+    margin-bottom: 0%;
+    height:10%;
+    width:10%;
+    /* background-color: blueviolet; */
+    z-index: 3;
+}
+#return_home_from_sing_up_link {
+    margin-right: 0%;
+    /* background-color: blueviolet; */
+    
+}
+.icon-wrapper_x {
+
+    /* background-color: blueviolet; */
+
+}  
+#pop_up_img {
+
+}

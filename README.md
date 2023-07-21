@@ -13,7 +13,7 @@ Kimura needs a website created for the promotion of her upcoming novel The Sword
 
 Despite what her bio says, she is rather disagreeable and controling by nature. She doesnt want anyone one her management team to be able to delete or edit the content of the website. She also is the only one who can create a new admin user. She maintains full control with the super-user:
 
-Super-Admin Name: Mesantos_K
+Super-Admin Email: K_Mesantos@protonmail.com
 Password: 1234creeper
 
 She requested that the web-site be created with:
@@ -32,7 +32,7 @@ With Kimura's permission, we have included the Super-user name and password insi
 
 If you would like to test out pre-approved access, feel free to use:
 
-Admin Name: johnJ
+Admin Email: jjjuice@gmail.com
 Password: @#!*&%$+19
 
 //Backend

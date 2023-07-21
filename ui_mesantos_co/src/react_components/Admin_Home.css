@@ -1,0 +1,104 @@
+.Admin_body {
+    text-align: center;
+    padding-top: 20%;  
+    padding-bottom: 300%;
+    background-color: black;
+}
+#para_welcome_admin {
+    margin-top: -50%;
+    font-size: 150%;
+    color: whitesmoke;
+    background-color: blue;
+}
+.center_piece {
+
+    padding-top: 30%;
+    padding-bottom: 80%;
+    margin-top: 4%;
+    margin-left: 5%;
+    margin-right: 5%;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.log_in_inside_container {
+    padding-top: 5%;
+    padding-bottom: 20%;
+    margin-top: 4%;
+    margin-left: 20%;
+    margin-right: 20%;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+
+
+
+
+
+
+
+.return_home {
+    margin-top: 0%;
+    margin-left: 80%;
+    /* margin-right: 20%; */
+    margin-bottom: 20%;
+    height:10%;
+    width:10%;
+    /* background-color: blue; */
+}
+#return_home_link {
+    
+}
+.icon-wrapper_x {
+
+}
+.log_in_banner {
+    font-size: 250%;
+    margin-top: 1%;
+    color: black;
+    /* background-color: blue */
+}
+
+#email {
+    font-size: 120%;
+    margin-top: 5%;
+    color: black;
+    /* background-color: blueviolet;     */
+}
+#password {
+    font-size: 120%;
+    margin-top: 5%;
+    color: black;
+    /* background-color: blue */
+}
+.admin_account_apply {
+
+}
+.admin_account_apply:hover {
+    color: gray
+} 
+#admin_account_apply_link {
+    text-decoration: none; /* Remove underlines from links */
+}
+.submit {
+    font-size: 120%;
+    margin-top: 10%;
+    /* background-color: blue;    */
+}

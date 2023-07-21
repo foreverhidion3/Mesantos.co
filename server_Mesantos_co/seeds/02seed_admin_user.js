@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
  * @returns { Promise<void> } 
  */
 exports.seed = async function(knex) {
-  const seeWithHashed = [
+  const seedWithHashed = [
     {
       first_name: 'Mesantos',
       last_name:'Kimura',

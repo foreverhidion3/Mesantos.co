@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const User_find = require('./log_in_helper_user_model/individual_user_findbyemail')
 
 const app = express();
 const port = 8082
@@ -11,6 +12,26 @@ const knex = require('knex')(require('./knexfile.js')['development']);
 app.use(cors({origin: 'http://localhost:3000'}));
 // app.use(cors());
 app.use(express.json());
+
+//POST for LOGIN 
+//Will check users creds. If they are correct, will generate and return a jwt
+app.post('/login', async (request, response) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User_find.findByEmail(email);
+        if (!user || !bcrypt.compareSync(password, user.password)) {
+            return res.status(401).json( {error: "Invalid email || password" });
+        }
+    
+    const jwtoken = jwt.sign( {userId: user.id }, "Mesantos_co_secret_key");
+    response.json( {jwtoken} )
+    }
+    catch (err) {
+        console.error("Login Error:", err);
+        response.status(500).json({error: 'Error during Login '});
+    }
+});
 
 //get
 app.get('/', (req, res) => 
