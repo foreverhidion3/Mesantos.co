@@ -2,9 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import './Account_Creation.css'
+import { useNavigate } from 'react-router-dom';
 
 
 const Account_Creation = () => {
+
+    const navigate = useNavigate();
 
     // const [admin, setadmin] = useState();
     // const [books, setbooks] = useState();
@@ -63,7 +66,9 @@ const Account_Creation = () => {
             })
                 .then(response => response.json())
                 .then(response => console.log(JSON.stringify(response)));
-        console.log(accountData)
+
+        console.log(accountData);
+        navigate('/admin_home');
     }
 
 

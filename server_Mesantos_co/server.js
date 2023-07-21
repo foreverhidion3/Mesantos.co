@@ -214,22 +214,37 @@ app.delete('/books', (request, response) => {
         response.status(500).json({ error: "An error occurred while deleting that email address." });
     });;
   })
-  //DELETE request
+//   DELETE request
+//   app.delete('/requests', (request, response) => {
+//     knex('user_requests')
+//     .where({
+//         id: request.body.id,
+//         first_name: request.body.first_name,
+//         last_name: request.body.last_name,
+//         email: request.body.email
+//     })
+//     .del(['id', 'first_name', 'last_name', 'email' ]) 
+//     .then (() => {
+//         response.json({message:"Request has been deleted"})
+//     })
+//     .catch(error => {
+//         console.error('Error with delete:', error);
+//         response.status(500).json({ error: "An error occurred while deleting that Request." });
+//     });;
+//   })
+  //DELETE all requests
   app.delete('/requests', (request, response) => {
     knex('user_requests')
-    .where({
-        first_name: request.body.first_name,
-        last_name: request.body.last_name
-    })
-    .del(['id', 'first_name', 'last_name', 'email' ]) 
-    .then (() => {
-        response.json({message:"Request has been deleted"})
-    })
-    .catch(error => {
+      .del()
+      .then(() => {
+        response.json({ message: 'All user requests have been deleted' });
+      })
+      .catch((error) => {
         console.error('Error with delete:', error);
-        response.status(500).json({ error: "An error occurred while deleting that Request." });
-    });;
-  })
+        response.status(500).json({ error: 'An error occurred while deleting user requests.' });
+      });
+  });
+
 
 
   //ALL PATCHES

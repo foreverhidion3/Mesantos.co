@@ -95,7 +95,7 @@ const Log_in = () => {
 
             <div className='log_in_inside_container'>
 
-                <Link to='/Home' id="return_home_link">
+                <Link to='/' id="return_home_link">
                 <p className='return_home'>
                     <span className="icon-wrapper_x">
                         <img id="close_image" src= {close_img} alt="close_img" />

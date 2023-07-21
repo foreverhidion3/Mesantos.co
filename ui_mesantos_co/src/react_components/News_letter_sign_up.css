@@ -1,11 +1,11 @@
 .pop_up_container {
-    margin-top: -75%;
-    margin-left: 20%;
-    margin-right: 20%;
+    /* margin-top: -75%; */
+    margin-left: 10%;
+    margin-right: 10%;
     padding-bottom: 58%;
     padding-top: 10%;
     /* background-color: blue; */
-    z-index: 2;
+    z-index: 1;
 }
 .return_home_from_sign_up {
     margin-top: 0%;
@@ -15,7 +15,7 @@
     height:10%;
     width:10%;
     /* background-color: blueviolet; */
-    z-index: 3;
+    z-index: 1;
 }
 #return_home_from_sing_up_link {
     margin-right: 0%;
@@ -29,4 +29,21 @@
 }  
 #pop_up_img {
 
+}
+#email_input {
+    margin-top: -55%;
+    margin-left: 25%;
+    /* margin-bottom: 50%; */
+    padding-bottom: 10%;
+    /* background-color: blueviolet; */
+    z-index: 2;
+}
+#subscribe_button {
+    margin-top: -50%;
+    margin-left: 46%;
+    background-color:  #BF9534; 
+    /* background-color: blueviolet; */
+}
+#subscribe_button:hover {
+    color: #BF9534;
 }
