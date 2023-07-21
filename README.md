@@ -24,16 +24,9 @@ She requested that the web-site be created with:
 
 We chose knex, docker, bcrypt, and JASON Web Tokens to round out the package.  
 
-In order to stream line the installation process, we wrote a docker-compose.yaml file to combind all the necessary downloads and add-ons into one 'docker-compose up' command. However, before the installation can begin, users must navigate to https://docs.docker.com/compose/install/ and install the latest version of Docker for their machine.
-
-Once Docker is installed, navigate to the Mesantos.co folder and run; docker-compose up in your terminal.
+In order to stream line the installation process, we tried to write a docker-compose.yaml file to combind all the necessary downloads and add-ons into one 'docker-compose up' command. However, we were not successful.
 
 With Kimura's permission, we have included the Super-user name and password inside of this document so that you will have full access to the application. If you would like to create an account of your own, fill out the application form and wait for it to be approved by Kimura. If she approves your request, she will email you your user name and password from K_Mesantos@protonmail.com 
-
-If you would like to test out pre-approved access, feel free to use:
-
-Admin Email: jjjuice@gmail.com
-Password: @#!*&%$+19
 
 //Backend
 
@@ -45,7 +38,7 @@ The database for Mesantos.co was seeded with knex and created with simpicity and
 
     Users includes one Admin Super-user and an unlimited number of Admin users.
     
-    Books is Kimura's current Library for sale.
+    Books is Kimura's current Library in development.
     
     Email list was included to allow interested parties to apply for a Sword Slinger News Letter once the book offically launches
 

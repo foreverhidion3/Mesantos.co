@@ -1,0 +1,46 @@
+version: "3.8"
+
+services: 
+
+  mesantos_co_react_app_image:
+    build: ui_mesantos_co
+    container_name: mesantos_co_react_app_container
+    ports: 
+      - "3000:3000"
+    networks: 
+      - mesantos_co_app_network
+
+  mesantos_co_app_server_image:
+    build: server_Mesantos_co
+    container_name: mesantos_co_server_container
+    ports: 
+      - "8082:8082"
+    depends_on: 
+      mesantos_co_app_db_2:
+        condition: service_healthy
+    networks: 
+      - mesantos_co_app_network
+    environment: 
+      DB_CONNECTION_STRING: postgres://postgres:docker@mesantos_co_app_db_container:5432/mesantos_co_app_db_2
+      #use this DB_CONNECTION_STRING(set up in the knex file so that the server_image image and the server_db image can communicate?)
+      
+  mesantos_co_app_db_2:
+    image: postgres:latest
+    container_name: mesantos_co_app_db_container
+    ports:
+      - "5432:5432"
+    healthcheck: 
+      test: pg_isready -U postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: mesantos_co_app_db_2
+    networks: 
+      - mesantos_co_app_network
+
+
+# docker-compose up appears to create its own network
+
+networks:
+  mesantos_co_app_network:
+    driver: bridge
