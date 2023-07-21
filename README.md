@@ -62,7 +62,7 @@ Another request was that the application feel as if it exists in a single space.
 
 
 //ISSUES
-We ran out of time to properly implement JWToken before the book was launched. As you might image, Kimura was furious. Without secuirty, she felt too insecure to run with the website. She said that she was afraid her employees would exploit her. In a fit of rage, she scrapped the project and fired us.
+We ran out of time to properly implement JWToken nor bcrypt before the book was launched. As you might image, Kimura was furious. Without secuirty, she felt too exposed to run with the website. She said that she was afraid her employees would exploit her. In a fit of rage, she scrapped the project and fired us.
 
 //FAILURES
 As of 21 July 2023, there are numerous feature still unfinished:

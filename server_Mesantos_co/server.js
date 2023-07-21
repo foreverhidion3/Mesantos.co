@@ -132,7 +132,7 @@ app.post('/books', (request, response) => {
     knex('books').insert({
         id: request.body.id,
         title: request.body.title,
-        image_path: request.body.image_path,
+        // image_path: request.body.image_path,
         description: request.body.description,
         cost: request.body.cost,
         available: request.body.available
