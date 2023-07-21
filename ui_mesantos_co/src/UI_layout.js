@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import { useState } from 'react'
+import './UI_layout.css'
 import Test_get from './Test_get.js'
 import Log_in from './react_components/Log_in.js'
 import ss_cover from './images/SS_COVER_Reduced.svg';

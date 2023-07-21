@@ -131,11 +131,11 @@ const Log_in = () => {
                 </div>
 
                 <div>
-                    {/* <Link to='/apply' id="admin_account_apply_link"> */}
+                    <Link to='/apply' id="admin_account_apply_link">
                     <p className='admin_account_apply'>
                         Apply for Admin Account
                     </p>
-                    {/* </Link> */}
+                    </Link>
                 </div> 
                 
                 <div>

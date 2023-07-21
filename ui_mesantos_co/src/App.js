@@ -8,6 +8,7 @@ import UI_layout from './UI_layout.js'
 import Account_Creation from './react_components/Account_Creation.js'
 import News_letter_sign_up from './react_components/News_letter_sign_up'
 import Add_Edit_Delete from './react_components/Add_Edit_Delete.js'
+import Admin_Apply from './react_components/Admin_Apply.js'
 
 
 
@@ -27,6 +28,7 @@ function App() {
             <Route path='/' element={<UI_layout />} />
             <Route path='/signup' element={<News_letter_sign_up />} />
             <Route path='/Log_in' element={<Log_in />} />
+            <Route path='/apply' element={<Admin_Apply />} />
             <Route path='/admin_home' element={<Admin_Home />} />
             <Route path='/Account_Creation' element={<Account_Creation />} />
             <Route path='/Add_Edit_Title' element={<Add_Edit_Delete />} />

@@ -7,7 +7,7 @@
 #center_piece {
 
     padding-top: 5%;
-    padding-bottom: 100%;
+    padding-bottom: 80%;
     margin-top: 4%;
     margin-left: 5%;
     margin-right: 5%;
@@ -25,13 +25,19 @@
     width:10%;
     /* background-color: blue; */
 }
-#add_book {
+#return_admin_home_link {
+    
+}
+.icon-wrapper_x {
+
+}
+#book_container_title {
+    margin-right: 70%;
+    /* margin-left: 5%; */
+    color: whitesmoke;
+    background-color: black;
+    /* background-color: blue; */
+}
+#add_request {
     margin-top: 3%;
 }
-#edit_book {
-    margin-top: 3%; 
-}
-#delete_book {
-    margin-top: 3%; 
-}
-

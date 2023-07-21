@@ -67,11 +67,13 @@ We ran out of time to properly implement JWToken nor bcrypt before the book was 
 //FAILURES
 As of 21 July 2023, there are numerous feature still unfinished:
 
-    Apply for account is not functional. But, I suppose this doesnt matter all that much as Mesantos is unlikely to allow her employees to make their own account any way.
-
     Purchase Ebook
 
     Pre-Purchase
+
+    UI incomplete
+
+    About href = not working
 
 
 
