@@ -51,6 +51,23 @@ The database for Mesantos.co was seeded with knex and created with simpicity and
 
     Admin User Account Request was built to store the requests for new accounts
 
+//UI 
+
+Since the site is being develped primary for the launch of her new book, Mesantos asked us to hard code that data into the frontend. 
+She wants to make absolutely sure that the users experince will not be disturbed for the launch. However, she asked us to write CRUD for all
+aspects of the project so that when she is prepared to further devlope the site all of the tools are ready and waiting. Withthat in mind, we wrote 
+CRUD for virtually all of her data.
+
+Another request was that the application feel as if it exists in a single space. For the user and for her (Super_Admin). Because of this, we attempted to distiguish between customer UI and admin UI by creating a stark differnce between them visually.
+
+
+//ISSUES
+We ran out of time to properly implement JWToken before the book was launched. As you might image, Kimura was furious. Without secuirty, she felt too insecure to run with the website. She said that she was afraid her employees would exploit her. In a fit of rage, she scrapped the project and fired us.
+
+
+
+
+
 
 
 

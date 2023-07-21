@@ -1,10 +1,12 @@
 import React from 'react';
-import { useEffect, useState } from 'react'
-import './Admin_Home.css'
+import { useEffect } from 'react';
+import { useState} from 'react';
+// import { useNavigate } from 'react-router_dom';
+import './Admin_Home.css';
 
 
 const Admin_Home = () => {
-
+    // const navigate = useNavigate();
     const [admin, setadmin] = useState();
     const [books, setbooks] = useState();
     const [email, setemail] = useState();
@@ -34,6 +36,29 @@ const Admin_Home = () => {
         console.log(email);
         console.log(requests);
 
+    const Books_gen = () => {
+
+      useEffect( () => {   
+          fetch("http://localhost:8082/books")
+          .then(response => response.json())
+          .then(data => {
+            setbooks(data);
+          })
+          .catch(err => {
+            console.error(err.message);
+          });
+          
+        }, []);  
+      
+      console.log(books)
+  
+          return(
+              <div>
+                  Test
+              </div>
+          )
+      }   
+
     const Welcome_admin = () => {
         return (
           <div className="admin_home_body">
@@ -43,25 +68,45 @@ const Admin_Home = () => {
           </div>
         );
       };
-    // const Books_gen = () => {
 
+     
+    
+    // const Users_gen = () => {
+        
+    // //fetch admin
+    // useEffect( () => {   
+    //     fetch("http://localhost:8082/admin")
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       setadmin(data);
+    //     })
+    //     .catch(err => {
+    //       console.error(err.message);
+    //     });
+        
+    //   }, []);
+    //     console.log(admin) 
+        
+    //     return (
+    //         <div>
+    //             Test 2
+    //         </div>
+    //     )
     // }
-
-
-
-
+    
     return (
       <div className='Admin_body'>
 
         <div className='center_piece'>
         
         <Welcome_admin />
-        {/* <Books_gen />
-        <Add_new_book />
-        <Edit_book />
-        <User_request_gen />
-        <Add_new_user />
-        <Email_gen /> */}
+        {/* <Books_gen /> */}
+        {/* <Add_new_book /> */}
+        {/* <Edit_book /> */}
+        {/* <Users_gen /> */}
+        {/* <User_request_gen /> */}
+        {/* <Add_new_user /> */}
+        {/* <Email_gen /> */}
 
         </div>      
 
@@ -79,3 +124,115 @@ const Admin_Home = () => {
 }
 
 export default Admin_Home;
+
+
+
+
+
+
+// jwToken fetch
+
+// useEffect(() => {
+//   fetchAdmin();
+// }, []);
+
+// const fetchAdmin = () => {
+//   const token = localStorge.getItem('jwtoken')
+//   if(!token) {
+//     navigate('/login');
+//     return;
+//   }
+// }
+
+// fetch('http://localhost:8082/admin'), {
+//   headers: {
+//     Authorization: `Have ${token}`,
+//   }
+//   .then((response) => {
+//     if (!response.ok) {
+//       throw new Error('Failded to fetch admin')
+//     }
+//     return response.json();
+//   })
+//   .then((data) => {
+//     setadmin(data);
+//   })
+//   .catch((error) => {
+//     console.error('Error fetching admin data:', error);
+//   })
+// }
+
+
+
+
+
+// jwToken setup
+
+// import React, { useEffect, useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import './Admin_Home.css';
+
+// const Admin_Home = () => {
+//   const navigate = useNavigate();
+//   const [admin, setAdmin] = useState();
+
+//   useEffect(() => {
+//     fetchAdminData();
+//   }, []);
+
+//   const fetchAdminData = () => {
+//     const token = localStorage.getItem('jwtoken');
+//     if (!token) {
+//       navigate('/login');
+//       return;
+//     }
+  
+//     fetch('http://localhost:8082/admin', {
+//       headers: {
+//         Authorization: `Bearer ${token}`, // Set the Authorization header with the token
+//       },
+//     })
+//       .then((response) => {
+//         if (!response.ok) {
+//           throw new Error('Failed to fetch admin data');
+//         }
+//         return response.json();
+//       })
+//       .then((data) => {
+//         setAdmin(data);
+//       })
+//       .catch((error) => {
+//         console.error('Error fetching admin data:', error);
+//       });
+//   };
+
+//     return (
+//       <div className='Admin_body'>
+
+//         <div className='center_piece'>
+        
+//         {/* <Welcome_admin /> */}
+//         {/* <Books_gen /> */}
+//         {/* <Add_new_book /> */}
+//         {/* <Edit_book /> */}
+//         {/* <Users_gen /> */}
+//         {/* <User_request_gen /> */}
+//         {/* <Add_new_user /> */}
+//         {/* <Email_gen /> */}
+
+//         </div>      
+
+
+
+//         {/* <Link_create_account />
+//         <Link_create_new_item />
+//         <Link_edit_item />
+//         <Welcome_admin /> */}
+
+        
+        
+//       </div>
+//     )
+// }
+
+// export default Admin_Home;

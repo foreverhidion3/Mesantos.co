@@ -13,15 +13,36 @@ app.use(cors({origin: 'http://localhost:3000'}));
 // app.use(cors());
 app.use(express.json());
 
+//server get 
+app.get('/', (req, res) => 
+res.send('Hello World! Mesantos.co is listening'))
+
+
+
+
+
+//middleware for jwtoken. Allows for authentication.
+
+// function authenticateToken(req, res, next) {
+//     const token = req.header('Authorization')?.split(' ')[1];
+//     if (!token) return res.status(401).json({ error: 'Access denied. Token missing.' });
+  
+//     jwt.verify(token, 'Mesantos_co_secret_key', (err, user) => {
+//       if (err) return res.status(403).json({ error: 'Invalid token.' });
+//       req.user = user; // Save the authenticated user in the request object for further use
+//       next(); // Proceed to the next middleware or route handler
+//     });
+//   }
+
 //POST for LOGIN 
 //Will check users creds. If they are correct, will generate and return a jwt
 app.post('/login', async (request, response) => {
-    const { email, password } = req.body;
+    const { email, password } = request.body;
 
     try {
         const user = await User_find.findByEmail(email);
         if (!user || !bcrypt.compareSync(password, user.password)) {
-            return res.status(401).json( {error: "Invalid email || password" });
+            return response.status(401).json( {error: "Invalid email || password" });
         }
     
     const jwtoken = jwt.sign( {userId: user.id }, "Mesantos_co_secret_key");
@@ -33,11 +54,19 @@ app.post('/login', async (request, response) => {
     }
 });
 
-//get
-app.get('/', (req, res) => 
-res.send('Hello World! Mesantos.co is listening'))
+
+// When you have time, come back and set up authentication  
+// example: 
+
+// app.get('/admin', authenticateToken, async function(request, response) {
+//     let data = await knex('admin_user').select('*')
+//     response.send((data))    
+// });
+
 
 // All GETs
+
+
 app.get('/admin', async function(request, response) {
     let data = await knex('admin_user').select('*')
     response.send((data))    
@@ -45,7 +74,7 @@ app.get('/admin', async function(request, response) {
 
 app.get('/books', async function(request, response) {
     let data = await knex('books').select('*')
-    response.send((data))
+    response.send(data)
 });
 app.get('/email', async function(request, response) {
     let data = await knex('email_list').select('*')
@@ -62,23 +91,8 @@ app.get('/books/:id', async function(request, response) {
     response.json(data)
 });
 
-// app.get('/', (req, res) => 
-// res.send("This then is the end."))
 
-// app.get ('/books/:id', (req, res) => {
-//     let { id } = req.params; 
-//     console.log(`This is the book ID! ${id}`)
-//     let mybook = books.find(element => {
-//         console.log(element.id, parseInt(id))
-//         return element.id === parseInt(id);
-//     })
-//     console.log("This is the book", mybook)
-//     res.send(mybook)   
-// })
-
-// app.get('/greeting', (req, res) => {
-//     res.send("Hello Paul! \n We've been waiting for you.")
-// })
+//ALL POSTS
 
 //POST email
 app.post('/email', (request, response) => {
@@ -148,6 +162,11 @@ app.post('/requests', (request, response) => {
     });
      
 });
+
+
+//ALL DELETES
+
+
 //DELETE book
 app.delete('/books', (request, response) => {
     knex('books')
@@ -212,6 +231,9 @@ app.delete('/books', (request, response) => {
     });;
   })
 
+
+  //ALL PATCHES
+
   
   //PATCH admin
   app.patch('/admin', (request, response) => {
@@ -270,72 +292,6 @@ app.delete('/books', (request, response) => {
 //         })
 //       );
 //   })
-
-
-
-
-
-
-
-// app.post('/email', (req, res) => {
-//     let newEmail = req.body;
-//     email.push(newEmail);
-//     res.send(`Email address: ${newEmail.email} has been added to the Library`);
-    
-// })
-
-// app.post('/movies', (req, res) => {
-//     let movieToAdd = req.body; // Access the body (payload) of the request
-//     moviesArr.push(movieToAdd);
-//     res.send(moviesArr);
-
-//put
-// app.put('/books/:id', (req, res) => {
-//     let { id } = req.params
-//     let { update } = req.body
-
-//     let bookI = books.findIndex((book) => book.id === parseInt(id))
-
-//     if (bookI !== undefined) {
-//         books[bookI] = {...books[bookI], ...update };
-//         res.send(`books has been updated with: ${id}`)
-//     } else {
-//         res.send("ID not found")
-//     }
-// })
-
-// app.put('/movies/:id', (req, res) => {
-//     var { id } = req.params; 
-
-// moviesArr.forEach((movie, index) => {
-//     if(movie.id == id) moviesArr[index] = {
-//         "id": id,
-//         "title": "Home Alone",
-//         "runtime": 103,
-//         "release_year": 1990,
-//         "director": "Chris Columbus"
-//     }
-// });
-
-//patch
-// app.patch('/movies/:id', (req, res) => {
-//     var { id } = req.params;
-//     let {title } = req.body;
-
-//     moviesArr.forEach((movie, index) => {
-//         if(movie.id == id) moviesArr[index].title = title; 
-//     });
-//     var justAdded = moviesArr.find(movie => movie.id == id);
-//     res.send(justAdded);
-// })
-
-//delete
-// app.delete('/movies/:id', (req, res) => {
-//     var { id } = req.params;
-//     var updatedMovies = moviesArr.filter(movie => movie.id != id);
-//     moviesArr = updatedMovies;
-//     res.send("Resource has been deleted.")
-// })
 
 
 

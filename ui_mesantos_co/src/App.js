@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes, Switch, Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 // import { Switch } from 'react-router'
 import './App.css';
 import Test_get from './Test_get.js'
@@ -16,6 +17,13 @@ import footer_img from './images/footer.svg';
 import News_letter_sign_up from './react_components/News_letter_sign_up'
 
 function App() {
+
+  const [token, setToken] = useState('');
+
+  const saveToken = (token) => {
+    setToken(token);
+    localStorage.setItem('token', token);
+  };
 
   // const navigate = useNavigate();
 
@@ -226,10 +234,10 @@ function App() {
       <div className='admin_body'>
 
 
-        <Routes>
+        {/* <Routes>
           <Route path='/Log_in' element={<Log_in />} />
           <Route path='/admin_home' element={<Admin_Home />} />
-        </Routes>
+        </Routes> */}
         
       
       </div>
@@ -237,7 +245,6 @@ function App() {
       <div className='pseudo-background' />
       
       <div className='container'>
-          {/* <Admin_Home /> */}
           <Link_to_admin />
           <Paragraphs />
           <Ss_cover />
@@ -255,6 +262,8 @@ function App() {
           <News_letter />
         <Routes>
             <Route path='/signup' element={<News_letter_sign_up />} />
+            <Route path='/Log_in' element={<Log_in />} />
+            <Route path='/admin_home' element={<Admin_Home />} />
         </Routes>
         <Empty_div_3 />
       

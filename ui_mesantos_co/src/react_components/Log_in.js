@@ -12,35 +12,35 @@ const Log_in = () => {
     //set var so you can useNavigate directly to admin_home
     const navigate = useNavigate();
 
-//fetch so I can track data
-    const [admin, setadmin] = useState();
-    const [books, setbooks] = useState();
-    const [email, setemail] = useState();
-    const [requests, setrequests] = useState();
+    //fetch so I can track data
+    // const [admin, setadmin] = useState();
+    // const [books, setbooks] = useState();
+    // const [email, setemail] = useState();
+    // const [requests, setrequests] = useState();
 
-    useEffect( () => {
+    // useEffect( () => {
 
-        const fetchAdmin = () => fetch ("http://localhost:8082/admin") .then (response => response.json());
-        const fetchBooks = () => fetch("http://localhost:8082/books") .then (response => response.json()); 
-        const fetchEmail = () => fetch("http://localhost:8082/email") .then (response => response.json());
-        const fetchRequests = () => fetch("http://localhost:8082/requests") .then(response => response.json());
+    //     const fetchAdmin = () => fetch ("http://localhost:8082/admin") .then (response => response.json());
+    //     const fetchBooks = () => fetch("http://localhost:8082/books") .then (response => response.json()); 
+    //     const fetchEmail = () => fetch("http://localhost:8082/email") .then (response => response.json());
+    //     const fetchRequests = () => fetch("http://localhost:8082/requests") .then(response => response.json());
   
-        Promise.all ([fetchAdmin(), fetchBooks(), fetchEmail(), fetchRequests()])
-        .then(data => {
-          setadmin(data[0]);
-          setbooks(data[1]);
-          setemail(data[2]);
-          setrequests(data[3]);
-        })
-        .catch(err => {
-          console.error(err.message);
-        });
+    //     Promise.all ([fetchAdmin(), fetchBooks(), fetchEmail(), fetchRequests()])
+    //     .then(data => {
+    //       setadmin(data[0]);
+    //       setbooks(data[1]);
+    //       setemail(data[2]);
+    //       setrequests(data[3]);
+    //     })
+    //     .catch(err => {
+    //       console.error(err.message);
+    //     });
         
-      }, []);
-        console.log(admin);
-        console.log(books);
-        console.log(email);
-        console.log(requests);
+    //   }, []);
+    //     console.log(admin);
+    //     console.log(books);
+    //     console.log(email);
+    //     console.log(requests);
       
 
     const [log_inData, setlog_inData] = useState({
@@ -77,7 +77,7 @@ const Log_in = () => {
 
                     //SAVE JWTOKEN to localStorage
                     //localStorage persists through browser refresh and sessions. 
-                    localStorage.setItem('jwtoken', data.jwtoken);
+                    // localStorage.setItem('jwtoken', data.jwtoken);
 
                     navigate('/admin_home');
                 })

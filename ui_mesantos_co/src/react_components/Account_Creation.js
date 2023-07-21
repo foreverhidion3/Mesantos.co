@@ -6,34 +6,34 @@ import './Account_Creation.css'
 
 const Account_Creation = () => {
 
-    const [admin, setadmin] = useState();
-    const [books, setbooks] = useState();
-    const [email, setemail] = useState();
-    const [requests, setrequests] = useState();
+    // const [admin, setadmin] = useState();
+    // const [books, setbooks] = useState();
+    // const [email, setemail] = useState();
+    // const [requests, setrequests] = useState();
 
-    useEffect( () => {
+    // useEffect( () => {
 
-        const fetchAdmin = () => fetch ("http://localhost:8082/admin") .then (response => response.json());
-        const fetchBooks = () => fetch("http://localhost:8082/books") .then (response => response.json()); 
-        const fetchEmail = () => fetch("http://localhost:8082/email") .then (response => response.json());
-        const fetchRequests = () => fetch("http://localhost:8082/requests") .then(response => response.json());
+    //     const fetchAdmin = () => fetch ("http://localhost:8082/admin") .then (response => response.json());
+    //     const fetchBooks = () => fetch("http://localhost:8082/books") .then (response => response.json()); 
+    //     const fetchEmail = () => fetch("http://localhost:8082/email") .then (response => response.json());
+    //     const fetchRequests = () => fetch("http://localhost:8082/requests") .then(response => response.json());
   
-        Promise.all ([fetchAdmin(), fetchBooks(), fetchEmail(), fetchRequests()])
-        .then(data => {
-          setadmin(data[0]);
-          setbooks(data[1]);
-          setemail(data[2]);
-          setrequests(data[3]);
-        })
-        .catch(err => {
-          console.error(err.message);
-        });
+    //     Promise.all ([fetchAdmin(), fetchBooks(), fetchEmail(), fetchRequests()])
+    //     .then(data => {
+    //       setadmin(data[0]);
+    //       setbooks(data[1]);
+    //       setemail(data[2]);
+    //       setrequests(data[3]);
+    //     })
+    //     .catch(err => {
+    //       console.error(err.message);
+    //     });
         
-      }, []);
-        console.log(admin);
-        console.log(books);
-        console.log(email);
-        console.log(requests);
+    //   }, []);
+    //     console.log(admin);
+    //     console.log(books);
+    //     console.log(email);
+    //     console.log(requests);
       
 
     const [accountData, setaccountData] = useState({
